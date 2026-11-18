@@ -1,0 +1,24 @@
+defaults: { timeout_seconds: 20, retries: 2 }
+sources:
+  gdelt:
+    enabled: true
+    ttl_minutes: 15
+    min_interval_seconds: 5
+    params: { maxrecords: 100, timespan: "24h", sort: "DateDesc" }
+  google_news_rss:
+    enabled: true
+    ttl_minutes: 15
+    min_interval_seconds: 3
+    params: { hl: "fa", gl: "IR", ceid: "IR:fa" }
+  rss:
+    enabled: true
+    ttl_minutes: 15
+    feeds:
+      - { name: "BBC Persian", url: "https://feeds.bbci.co.uk/persian/rss.xml", lang: fa }
+      - { name: "BBC World", url: "https://feeds.bbci.co.uk/news/world/rss.xml", lang: en }
+      - { name: "Al Jazeera", url: "https://www.aljazeera.com/xml/rss/all.xml", lang: en }
+  hn_algolia:
+    enabled: true
+    ttl_minutes: 5
+    min_interval_seconds: 1
+    params: { tags: "story", hitsPerPage: 50 }
